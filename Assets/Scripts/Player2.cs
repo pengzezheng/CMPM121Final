@@ -47,4 +47,25 @@ public class Player2 : MonoBehaviour
             SceneManager.LoadScene(4);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "SpeedBuff")
+        {
+            Destroy(other.gameObject);
+            if (speed < 20)
+            {
+                speed += 1;
+            }
+        }
+
+        if (other.gameObject.tag == "MassBuff")
+        {
+            Destroy(other.gameObject);
+            if (GetComponent<Rigidbody>().mass < 1)
+            {
+                GetComponent<Rigidbody>().mass += 0.1f;
+            }
+        }
+    }
 }

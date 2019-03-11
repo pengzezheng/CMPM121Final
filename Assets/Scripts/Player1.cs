@@ -36,7 +36,7 @@ public class Player1 : MonoBehaviour
             transform.Rotate(Vector3.down * Time.deltaTime * -rotationSpeed);
         }
 
-        if(transform.position.y <= -1)
+        if (transform.position.y <= -1)
         {
             timer -= Time.deltaTime;
         }
@@ -45,6 +45,28 @@ public class Player1 : MonoBehaviour
         {
             timer = 2.0f;
             SceneManager.LoadScene(5);
+        }
+        Debug.Log(speed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "SpeedBuff")
+        {
+            Destroy(other.gameObject);
+            if (speed < 20)
+            {
+                speed += 1;
+            }
+        }
+
+        if (other.gameObject.tag == "MassBuff")
+        {
+            Destroy(other.gameObject);
+            if (GetComponent<Rigidbody>().mass < 1)
+            {
+                GetComponent<Rigidbody>().mass += 0.1f;
+            }
         }
     }
 }
