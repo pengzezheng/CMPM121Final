@@ -9,6 +9,16 @@ public class Player2 : MonoBehaviour
     float rotationSpeed = 500;
     float timer = 2.0f;
     // Start is called before the first frame update
+
+    void OnGUI()
+    {
+        //Show score
+        GUIStyle style = GUI.skin.GetStyle("label");
+        style.fontSize = (int)(10f);
+        GUI.Label(new Rect(700, 0, 400, 100), "Player 2 Speed: " + speed);
+        GUI.Label(new Rect(700, 50, 400, 100), "Player 2 Mass: " + GetComponent<Rigidbody>().mass);
+    }
+
     void Start()
     {
         

@@ -9,6 +9,17 @@ public class Player1 : MonoBehaviour
     float rotationSpeed = 500;
     float timer = 2.0f;
     // Start is called before the first frame update
+
+    void OnGUI()
+    {
+        //Show score
+        GUIStyle style = GUI.skin.GetStyle("label");
+        style.normal.textColor=Color.black;
+        style.fontSize = (int)(10f);
+        GUI.Label(new Rect(0, 0, 400, 100), "Player 1 Speed: " + speed);
+        GUI.Label(new Rect(0, 50, 400, 100), "Player 1 Mass: " + GetComponent<Rigidbody>().mass);
+    }
+
     void Start()
     {
 
@@ -46,7 +57,7 @@ public class Player1 : MonoBehaviour
             timer = 2.0f;
             SceneManager.LoadScene(5);
         }
-        Debug.Log(speed);
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -58,6 +69,7 @@ public class Player1 : MonoBehaviour
             {
                 speed += 1;
             }
+            //Debug.Log("Speed is "+speed);
         }
 
         if (other.gameObject.tag == "MassBuff")
@@ -67,6 +79,7 @@ public class Player1 : MonoBehaviour
             {
                 GetComponent<Rigidbody>().mass += 0.1f;
             }
+            //Debug.Log("Mass is " + GetComponent<Rigidbody>().mass);
         }
     }
 }

@@ -8,10 +8,10 @@ public class EventObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("RespawnObject1", 1, 10);   
-        InvokeRepeating("RespawnObject2", 1, 10);   
-        InvokeRepeating("RespawnObject3", 1, 10);   
-        InvokeRepeating("RespawnObject4", 1, 10);   
+        InvokeRepeating("RespawnObject1", 1, 15);   
+        InvokeRepeating("RespawnObject2", 1, 15);   
+        InvokeRepeating("RespawnObject3", 1, 15);   
+        InvokeRepeating("RespawnObject4", 1, 15);   
         InvokeRepeating("RespawnItem1", 1, 15);   
         InvokeRepeating("RespawnItem2", 1, 15);   
     }
