@@ -1,0 +1,11 @@
+
+Animation: https://www.mixamo.com/#/
+Terrain texture: https://assetstore.unity.com/packages/vfx/shaders/simple-physical-shader-22143
+Item models: https://assetstore.unity.com/packages/3d/props/simple-gems-ultimate-animated-customizable-pack-73764
+Object texture: https://assetstore.unity.com/packages/3d/props/exterior/metal-plates-64240
+Player texture: https://assetstore.unity.com/packages/vfx/shaders/gem-shader-3
+Sound: https://freesound.org/people/supervanz/sounds/434164/
+https://freesound.org/people/svenmusik/sounds/105230/
+https://freesound.org/people/Hoerspielwerkstatt_HEF/sounds/457917/
+https://freesound.org/people/sharesynth/sounds/344511/
+Font: https://cooltext.com

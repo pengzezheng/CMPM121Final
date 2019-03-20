@@ -2,26 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player2 : MonoBehaviour
 {
-    int speed = 10;
+    int speed = 5;
     float rotationSpeed = 500;
     float timer = 2.0f;
+    private Animator anima;
+    public AudioSource sp;
+    public AudioSource ma;
+    GameObject part2;
+    public Text spd;
+    public Text mas;
+
     // Start is called before the first frame update
-
-    void OnGUI()
-    {
-        //Show score
-        GUIStyle style = GUI.skin.GetStyle("label");
-        style.fontSize = (int)(10f);
-        GUI.Label(new Rect(700, 0, 400, 100), "Player 2 Speed: " + speed);
-        GUI.Label(new Rect(700, 50, 400, 100), "Player 2 Mass: " + GetComponent<Rigidbody>().mass);
-    }
-
     void Start()
     {
-        
+        anima = GetComponent<Animator>();
+
+        sp = gameObject.AddComponent<AudioSource>();
+        sp.playOnAwake = false;
+        sp.loop = false;
+        sp.clip = Resources.Load<AudioClip>("Speed");
+
+        ma = gameObject.AddComponent<AudioSource>();
+        ma.playOnAwake = false;
+        ma.loop = false;
+        ma.clip = Resources.Load<AudioClip>("Mass");
+
+        part2 = GameObject.Find("Particle System2");
+        part2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,11 +41,18 @@ public class Player2 : MonoBehaviour
         //Movement
         if (Input.GetKey(KeyCode.UpArrow))
         {
+            anima.SetBool("Walk", true);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
+            anima.SetBool("Bwalk", true);
             transform.Translate(Vector3.back * speed * Time.deltaTime);
+        }
+        else
+        {
+            anima.SetBool("Walk", false);
+            anima.SetBool("Bwalk", false);
         }
         //Rotation
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -44,6 +62,12 @@ public class Player2 : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Rotate(Vector3.down * Time.deltaTime * -rotationSpeed);
+        }
+
+        if (transform.position.y <= -0.5f)
+        {
+            part2.transform.position = transform.position;
+            part2.SetActive(true);
         }
 
         if (transform.position.y <= -1)
@@ -56,14 +80,19 @@ public class Player2 : MonoBehaviour
             timer = 2.0f;
             SceneManager.LoadScene(4);
         }
+
+        spd.text = speed.ToString();
+        mas.text = GetComponent<Rigidbody>().mass.ToString();
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "SpeedBuff")
         {
+            sp.Play();
             Destroy(other.gameObject);
-            if (speed < 20)
+            if (speed < 12)
             {
                 speed += 1;
             }
@@ -71,6 +100,7 @@ public class Player2 : MonoBehaviour
 
         if (other.gameObject.tag == "MassBuff")
         {
+            ma.Play();
             Destroy(other.gameObject);
             if (GetComponent<Rigidbody>().mass < 1)
             {

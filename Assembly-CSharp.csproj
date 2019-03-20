@@ -67,7 +67,13 @@
     <Compile Include="Assets\Scripts\Player1Win.cs" />
     <Compile Include="Assets\Scripts\Player2.cs" />
     <Compile Include="Assets\Scripts\Player2Win.cs" />
+    <Compile Include="Assets\Scripts\Restart.cs" />
     <Compile Include="Assets\Scripts\TitleEvent.cs" />
+    <None Include="Assets\SimplePhysicalShader\SimplePhysicalShaderRetro.shader" />
+    <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Basic.shader" />
+    <None Include="Assets\SimplePhysicalShader\SimplePhysicalShader.shader" />
+    <None Include="Assets\SimplePhysicalShader\SimplePhysicalShaderCoat.shader" />
+    <None Include="Assets\Gem\Shaders\Gem.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Pengze Zheng/Desktop/XX/CMPM121/Final/Casual Arena Pengze Zheng/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
